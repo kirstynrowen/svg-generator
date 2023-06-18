@@ -1,0 +1,26 @@
+{
+    "name": "svg-logo-maker",
+    "version": "1.0.0",
+    "description": "Command line tool to generate an svg logo",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+      },
+    "scripts": {
+      "test": "jest",
+      "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kirstynrowen/team-profile-oop.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "UNLICENSED",
+    "dependencies": {
+      "inquirer": "^8.2.4"
+    },
+    "devDependencies": {
+      "jest": "^28.1.3"
+    }
+}
