@@ -1,6 +1,10 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+//validate character count
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
+//import classes
+const { Circle, Square, Triangle } = require('./lib/shapes');
 
 // GIVEN a command-line application that accepts user input
 function runInquirer() {
@@ -29,7 +33,21 @@ function runInquirer() {
             message: 'What color would you like your logo text to be?',
         },
     ])
-    .then()
+    .then(({ text, shape, shapeColor, textColor }) => {
+        let newShape;
+        switch (shape) {
+            case 'circle':
+                newShape = new Circle();
+                break;
+            case 'square':
+                newShape = new Square();
+                break;
+            case 'triangle':
+                newShape = new Triangle();
+                break;
+        }
+        newShape.setColor(shapeColor);
+    })
 }
 
 // WHEN I have entered input for all the prompts
