@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
+const { writeFile } = require("fs/promises");
 //validate character count
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
@@ -55,7 +55,7 @@ function runInquirer() {
         logoSVG.createText(text, textColor);
         logoSVG.createShape(newShape);
 
-        return fs.writeFile('logo.svg', logoSVG.render());
+        return writeFile('logo.svg', logoSVG.render());
     })
     .then(() => {
         console.log('Your logo is ready!');
