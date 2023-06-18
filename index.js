@@ -7,7 +7,6 @@ inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
 const { Circle, Square, Triangle } = require('./lib/shapes');
 const LogoSVG = require('./lib/svgGen');
 
-// GIVEN a command-line application that accepts user input
 function runInquirer() {
     return inquirer
     .prompt([
@@ -51,8 +50,19 @@ function runInquirer() {
                 return;
         }
         newShape.setColor(shapeColor);
+
+        const logoSVG = new LogoSVG();
+        logoSVG.createText(text, textColor);
+        logoSVG.createShape(newShape);
+
+        return fs.writeFile('logo.svg', logoSVG.render());
+    })
+    .then(() => {
+        console.log('Your logo is ready!');
     })
 }
+
+runInquirer();
 
 // WHEN I have entered input for all the prompts
 // THEN an SVG file is created named `logo.svg`
