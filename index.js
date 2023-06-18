@@ -5,6 +5,7 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
 //import classes
 const { Circle, Square, Triangle } = require('./lib/shapes');
+const LogoSVG = require('./lib/svgGen');
 
 // GIVEN a command-line application that accepts user input
 function runInquirer() {
@@ -45,6 +46,9 @@ function runInquirer() {
             case 'triangle':
                 newShape = new Triangle();
                 break;
+            default:
+                console.log('Invalid choice');
+                return;
         }
         newShape.setColor(shapeColor);
     })
